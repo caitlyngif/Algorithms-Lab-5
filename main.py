@@ -13,8 +13,20 @@ def ssort(L):
         return [L[0]] + ssort(L[1:])
         
 def qsort(a, pivot_fn):
-    ## TO DO
-    pass
+    if (len(a) <= 1):
+        return a
+    else:
+        p = pivot_fn(a)
+        left = [x for x in a if x < p]
+        right = [x for x in a if x > p]
+        middle = [x for x in a if x == p]
+        return (qsort(left, pivot_fn) + middle + qsort(right, pivot_fn))
+
+def qsort_pivot_first_element(a):
+    return a[0]
+
+def qsort_pivot_random_element(a):
+    return random.choice(a)
     
 def time_search(sort_fn, mylist):
     """
@@ -50,9 +62,9 @@ def compare_sort(sizes=[100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 10
       for each method to run on each value of n
     """
     ### TODO - sorting algorithms for comparison
-    qsort_fixed_pivot = # 
-    qsort_random_pivot = #
-    tim_sort = #
+    qsort_fixed_pivot = lambda mylist: qsort(mylist, qsort_pivot_first_element)
+    qsort_random_pivot = lambda mylist: qsort(mylist, qsort_pivot_random_element)
+    tim_sort = sorted
     result = []
     for size in sizes:
         # create list in ascending order
