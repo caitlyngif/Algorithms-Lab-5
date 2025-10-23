@@ -73,9 +73,10 @@ def compare_sort(sizes=[100, 200, 500, 995]):
         random.shuffle(mylist)
         result.append([
             len(mylist),
-            time_search(ssort, mylist),
-            time_search(qsort_fixed_pivot, mylist),
+            # time_search(ssort, mylist),
+            # time_search(qsort_fixed_pivot, mylist),
             time_search(qsort_random_pivot, mylist),
+            time_search(tim_sort, mylist)
         ])
     return result
     ###
@@ -83,7 +84,7 @@ def compare_sort(sizes=[100, 200, 500, 995]):
 def print_results(results):
     """ change as needed for comparisons """
     print(tabulate.tabulate(results,
-                            headers=['n', 'selection sort', 'qsort-fixed-pivot', 'qsort-random-pivot'],
+                            headers=['n', 'qsort-random-pivot', 'Timsort'],
                             floatfmt=".3f",
                             tablefmt="github"))
 
